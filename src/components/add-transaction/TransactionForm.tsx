@@ -23,12 +23,16 @@ export const TransactionForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-    const newData = {
+    const data = Object.fromEntries(formData.entries()) as {
+      description: string;
+      type: "income" | "expense";
+      amount: string;
+    };
+    const newData: Omit<Transaction, "id"> = {
       description: data.description as string,
       type: data.type as "income" | "expense",
       amount: Number(data.amount),
-    } as Transaction;
+    };
     handleSubmitForm(newData);
     setIsOpen(false);
 

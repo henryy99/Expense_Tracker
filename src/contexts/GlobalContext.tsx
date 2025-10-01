@@ -44,7 +44,7 @@ type TransactionAction =
 type GlobalContextType = {
   state: TransactionState;
   dispatch: React.Dispatch<TransactionAction>;
-  handleSubmitForm(formData: Transaction): void;
+  handleSubmitForm(formData: Omit<Transaction, "id">): void;
   handleDeleteTransaction(id: number): void;
 };
 
@@ -145,8 +145,11 @@ export default function GlobalState({ children }: GlobalStateProps) {
     };
   }, []);
 
-  async function handleSubmitForm(formData: Omit<Transaction, "id">) {
-    if (!formData) return;
+  async function handleSubmitForm(
+    formData: Omit<Transaction, "id">
+  ): Promise<void> {
+    if (!formData) console.log("no form data");
+
     console.log(formData);
 
     try {
