@@ -25,8 +25,8 @@ export const Summary = () => {
           alignItems={"center"}
           justifyContent={"space-evenly"}
         >
-          <Heading size={"md"} mb={4} color={"gray.600"}>
-            Balance is {state.income - state.expense}
+          <Heading size={"md"} mb={4} color={"gray.600"} fontSize={"xl"}>
+            Balance is ${state.income - state.expense}
           </Heading>
           <Flex
             direction={"column"}
