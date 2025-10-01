@@ -145,7 +145,7 @@ export default function GlobalState({ children }: GlobalStateProps) {
     };
   }, []);
 
-  async function handleSubmitForm(formData: Transaction) {
+  async function handleSubmitForm(formData: Omit<Transaction, "id">) {
     if (!formData) return;
     console.log(formData);
 
