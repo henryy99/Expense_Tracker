@@ -10,7 +10,13 @@ import {
   RadioGroup,
 } from "@chakra-ui/react";
 import { useTransaction } from "@/contexts/GlobalContext";
-
+type Transaction = {
+  id: number;
+  description: string;
+  type: "income" | "expense";
+  amount: number;
+  created_at?: string;
+};
 export const TransactionForm = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { handleSubmitForm } = useTransaction();
@@ -22,7 +28,7 @@ export const TransactionForm = () => {
       description: data.description as string,
       type: data.type as "income" | "expense",
       amount: Number(data.amount),
-    };
+    } as Transaction;
     handleSubmitForm(newData);
     setIsOpen(false);
 
